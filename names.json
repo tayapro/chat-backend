@@ -1,0 +1,12 @@
+{
+    "first_names": ["Daisy", "Deborah", "Isabel", "Stella", "Debra", "Beverly", "Vera", "Angela", "Lucy", "Lauren",
+                    "Janet", "Loretta", "Tracey", "Beatrice", "Sabrina", "Melody", "Chrysta", "Christina", "Vicki",
+                    "Molly", "Alison", "Miranda", "Stephanie", "Leona", "Katrina", "Mila", "Teresa", "Gabriela",
+                    "Ashley", "Nicole", "Valentina", "Rose", "Juliana", "Alice", "Kathie", "Gloria", "Luna", "Phoebe",
+                    "Angelique", "Graciela", "Gemma", "Katelynn", "Danna", "Luisa", "Julie", "Olive", "Carolina"],
+    "second_names": ["Williams", "Harris", "Thomas", "Robinson", "Walker", "Scott", "Nelson", "Mitchell", "Morgan",
+                     "Cooper", "Howard", "Davis", "Miller", "Martin", "Smith", "Anderson", "White", "Perry", "Clark",
+                     "Richards", "Wheeler", "Warburton", "Stanley", "Holland", "Terry", "Shelton", "Miles", "Lucas",
+                     "Fletcher", "Parks", "Norris", "Guzman", "Daniel", "Newton", "Potter", "Francis", "Erickson",
+                     "Norman", "Moody", "Lindsey", "Gross", "Sherman", "Simon", "Jones", "Brown", "Garcia", "Rodriguez"]
+}
