@@ -1,8 +1,8 @@
-# Use an node:14 image from DockerHub as a parent image
+# Use an node:18 image from DockerHub as a parent image
 FROM node:18.15.0
 
 # Set the working directory to /homyaksocial-backend
-WORKDIR /stipaxaAI_server
+WORKDIR /chat_backend
 
 # Copy required files to the image
 COPY index.js .
