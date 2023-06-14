@@ -30,11 +30,17 @@ app.get('/', (req, res) => {
     return res.send('Receive a GET HTTP method')
 })
 
+app.get('/api/greeting', async (req, res) => {
+    try {
+        res.send('hello')
+    } catch (e) {
+        res.status(400).send(e)
+    }
+})
+
 app.get('/api/avatar', async (req, res) => {
     try {
-        const avatar_file = await f.readLines('./avatars/1.png')
-        const avatar_base64 = Buffer.from(avatar_file).toString('base64')
-        console.log(avatar_base64)
+        const avatar_base64 = await getAvatarPicture()
         res.send(avatar_base64)
     } catch (e) {
         res.status(400).send(e)
@@ -95,3 +101,9 @@ app.get('/api/human_says', (req, res) => {
         res.status(400).send(e)
     }
 })
+
+async function getAvatarPicture() {
+    const avatar_file = await f.readLines('./avatars/1.png')
+    const avatar_base64 = Buffer.from(avatar_file).toString('base64')
+    return avatar_base64
+}

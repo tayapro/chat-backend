@@ -1,4 +1,5 @@
 import random from 'random'
+import f from './files.js'
 
 export function generateName(names) {
     if (names === {})
@@ -30,11 +31,6 @@ export function generateSentence(dictionary, n) {
     }
     const sentence = sentence_array.join(' ')
     return sentence
-}
-
-export function getAvatar() {
-    let avatar = ''
-    return avatar
 }
 
 function pickRandom(arr) {
