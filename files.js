@@ -2,7 +2,7 @@ import fs from 'fs/promises'
 
 async function readLines(file_name) {
     try {
-        const data = await fs.readFile(file_name, 'utf8')
+        const data = await fs.readFile(file_name)
         return data
     } catch (err) {
         console.log(err)
@@ -10,5 +10,5 @@ async function readLines(file_name) {
 }
 
 export default {
-    readLines
+    readLines,
 }

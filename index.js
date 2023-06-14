@@ -30,6 +30,17 @@ app.get('/', (req, res) => {
     return res.send('Receive a GET HTTP method')
 })
 
+app.get('/api/avatar', async (req, res) => {
+    try {
+        const avatar_file = await f.readLines('./avatars/1.png')
+        const avatar_base64 = Buffer.from(avatar_file).toString('base64')
+        console.log(avatar_base64)
+        res.send(avatar_base64)
+    } catch (e) {
+        res.status(400).send(e)
+    }
+})
+
 app.get('/api/sentence', (req, res) => {
     try {
         const sentence = ai.generateSentence_v3(words)
@@ -38,26 +49,6 @@ app.get('/api/sentence', (req, res) => {
         res.status(400).send(e)
     }
 })
-
-// app.post('/api/sentence', (req, res) => {
-//     try {
-//         if (req.body.num_words === '') {
-//             throw new Error('Number of words is not specified')
-//         }
-//         const request_number = req.body.num_words
-//         let result = []
-//         while (result.length <= request_number) {
-//             const new_words = ai.generateSentence_v3(words).split(' ')
-//             console.log(`new words is "${new_words}"`)
-//             result = result.concat(new_words)
-//         }
-//         result = result.slice(0, request_number)
-//         res.send(`${result.join(' ')}`)
-//     } catch (e) {
-//         console.error(e)
-//         res.status(400).send()
-//     }
-// })
 
 app.post('/api/sentence', (req, res) => {
     try {
