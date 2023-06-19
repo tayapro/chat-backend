@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
+import fs from 'fs'
 import 'dotenv/config'
 import ai from './ai.js'
 import f from './files.js'
@@ -38,9 +39,10 @@ app.get('/api/greeting', async (req, res) => {
     }
 })
 
-app.get('/api/avatar', async (req, res) => {
+app.post('/api/avatar', async (req, res) => {
     try {
-        const avatar_base64 = await getAvatarPicture()
+        const senderName = req.body.sender_name
+        const avatar_base64 = await getAvatarPicture(senderName)
         res.send(avatar_base64)
     } catch (e) {
         res.status(400).send(e)
@@ -102,8 +104,25 @@ app.get('/api/human_says', (req, res) => {
     }
 })
 
-async function getAvatarPicture() {
-    const avatar_file = await f.readLines('./avatars/1.png')
+async function getAvatarPicture(senderName) {
+    const dir = './avatars'
+    const files = readDirectory(dir)
+    const firstLetterascii = senderName.charAt(0).charCodeAt(0)
+    const avatarFileName = firstLetterascii % files.length
+    const fn = avatarFileName.toString()
+    const avatar_file = await f.readLines(`${dir}/${fn}.png`)
     const avatar_base64 = Buffer.from(avatar_file).toString('base64')
+
+    console.log('<<<<<<<<<<<<', files)
+
     return avatar_base64
+}
+
+function readDirectory(dirPath) {
+    try {
+        const files = fs.readdirSync(dirPath)
+        return files
+    } catch (e) {
+        console.log(e)
+    }
 }
